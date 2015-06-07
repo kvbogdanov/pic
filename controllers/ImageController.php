@@ -29,7 +29,7 @@ class ImageController extends \yii\web\Controller
 
             if($model->save()){
                 $image->saveAs($path);
-                //return $this->redirect(['view', 'id'=>$model->_id]);
+                return $this->redirect(['view', 'id'=>$model->id_image]);
             } else {
                 // error in saving model
             }
@@ -40,9 +40,9 @@ class ImageController extends \yii\web\Controller
         ]);
     }
 
-    public function actionView()
+    public function actionView($id=2)
     {
-        $image = CImage::findOne(2);
+        $image = CImage::findOne($id);
 
         return $this->render('view', [
         	'model' => $image
