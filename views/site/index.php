@@ -1,9 +1,11 @@
 <?php
 /* @var $this yii\web\View */
-$this->title = 'My Yii Application';
+$this->title = 'Pic Mainpage';
 ?>
 <div class="site-index">
 
+    <h1>List of available pics</h1>
+    <!--
     <div class="jumbotron">
         <h1>Congratulations!</h1>
 
@@ -46,6 +48,6 @@ $this->title = 'My Yii Application';
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
             </div>
         </div>
-
     </div>
+    -->
 </div>
