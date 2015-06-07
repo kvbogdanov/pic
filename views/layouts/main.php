@@ -67,6 +67,7 @@ AppAsset::register($this);
 <script>
     $(function() {
         $( "#rd1, #rd2, #rd3" ).draggable().resizable();
+        $(".remove").click(function(){$(this).parent().remove();})
     });
 </script>
 </body>

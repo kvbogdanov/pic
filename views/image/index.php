@@ -14,7 +14,7 @@ use kartik\file\FileInput;
 $form = ActiveForm::begin([
     'options'=>['enctype'=>'multipart/form-data'] // important
 ]);
-echo $form->field($model, 'filename');
+echo $form->field($model, 'filename')->hiddenInput();
  
 // your fileinput widget for single file upload
 echo $form->field($model, 'image')->widget(FileInput::classname(), [
