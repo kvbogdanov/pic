@@ -5,6 +5,15 @@ $this->title = 'Pic Mainpage';
 <div class="site-index">
 
     <h1>List of available pics</h1>
+
+
+    <?php
+
+        foreach ($images as $key => $image) {
+            $lnk = urlencode(substr($image->picture, 0 , 8));
+            echo "<a href='/show/$lnk'>Изображение {$image->id_image}</a><br>";
+        }
+    ?>
     <!--
     <div class="jumbotron">
         <h1>Congratulations!</h1>

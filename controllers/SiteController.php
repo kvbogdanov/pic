@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\CImage;
 
 class SiteController extends Controller
 {
@@ -49,7 +50,11 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $images = CImage::find()->all();
+
+        return $this->render('index', [
+            'images' => $images
+        ]);
     }
 
     public function actionLogin()
