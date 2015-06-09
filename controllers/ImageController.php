@@ -44,6 +44,9 @@ class ImageController extends \yii\web\Controller
     {
         $image = CImage::findOne($id);
 
+        if(!empty($image->blocks))
+        	$this->redirect("/");
+
         return $this->render('view', [
         	'model' => $image
         ]);
@@ -124,7 +127,7 @@ class ImageController extends \yii\web\Controller
 
 
 			foreach ($blocks as $key => $block) {
-				if(!in_array($block->id, $not_showed))
+				if(!in_array($block->code, $not_showed))
 					imagefilledrectangle($img, $block->x, $block->y, ($block->x + $block->width), ($block->y + $block->height), $black);
 			}
 

@@ -82,6 +82,7 @@ AppAsset::register($this);
                 if($('#rd1').length > 0)
                     result.blocks.push({
                             id: 1,
+                            code: $('#code1').val(),
                             x: $('#rd1').position().left - ipos.left,
                             y: $('#rd1').position().top - ipos.top,
                             width: $('#rd1').width(),
@@ -91,6 +92,7 @@ AppAsset::register($this);
                 if($('#rd2').length > 0)
                     result.blocks.push({
                             id: 2,
+                            code: $('#code2').val(),
                             x: $('#rd2').position().left - ipos.left,
                             y: $('#rd2').position().top - ipos.top,
                             width: $('#rd2').width(),
@@ -100,6 +102,7 @@ AppAsset::register($this);
                 if($('#rd3').length > 0)
                     result.blocks.push({
                             id: 3,
+                            code: $('#code3').val(),
                             x: $('#rd3').position().left - ipos.left,
                             y: $('#rd3').position().top - ipos.top,
                             width: $('#rd3').width(),
@@ -108,14 +111,16 @@ AppAsset::register($this);
 
                 console.log(JSON.stringify(result));
 
-                $.ajax({
-                    type: "POST",
-                    url: "/image/update",
-                    data: {id: $('#saveblocks').attr('data-id'), info: JSON.stringify(result)},
-                    success: function(data){
-                        console.log(data);
-                    }
-                })
+                if(confirm("После сохранения и закрытия страницы картинка будет недоступна. Продолжить?"))
+                    $.ajax({
+                        type: "POST",
+                        url: "/image/update",
+                        data: {id: $('#saveblocks').attr('data-id'), info: JSON.stringify(result)},
+                        success: function(data){
+                            console.log(data);
+                            alert("Сохранено");
+                        }
+                    })
 
         });
     });
@@ -131,7 +136,7 @@ AppAsset::register($this);
     var num_blocks = [];
 
     function getprompt(block){
-        var block = prompt("Введите номер блока", "Номер");
+        var block = prompt("Введите код блока", "Код");
 
         if (block != null) {
             num_blocks.push(block);
