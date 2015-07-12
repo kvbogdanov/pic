@@ -5,9 +5,12 @@ namespace app\controllers;
 use Yii;
 use app\models\CImage;
 use yii\web\UploadedFile;
+use yii\web\Request;
 
 class ImageController extends \yii\web\Controller
 {
+    public $image_url;
+
     public function actionIndex()
     {
         $model = new CImage;
@@ -141,7 +144,7 @@ class ImageController extends \yii\web\Controller
     public function actionShow($code)
     {
     	$image = CImage::find()->where('picture LIKE :query')->addParams([':query' => $code."%"])->one();
-
+        $this->view->params['imageUrl'] = Yii::$app->request->getHostInfo().'/image/preview/'.$image->id_image; 
         return $this->render('show', [
         	'model' => $image
         ]);
